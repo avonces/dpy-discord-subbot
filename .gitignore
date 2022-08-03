@@ -1,0 +1,12 @@
+# User-specific stuff
+.idea/
+
+*.iml
+*.ipr
+*.iws
+
+# Env file containing tokens and keys
+.env
+
+# Log file
+*.log
