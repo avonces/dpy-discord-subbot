@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 # dotenv
 """import secrets and vars from .env file because of security and configuration reasons"""
 dotenv.load_dotenv()
-errorEmbedColor = int(os.getenv("ERROR_EMBED_COLOR"))
+errorEmbedColor = int(os.getenv('ERROR_EMBED_COLOR'))
 
 
 # extension

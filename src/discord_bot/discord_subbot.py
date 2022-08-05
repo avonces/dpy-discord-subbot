@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 # dotenv
 """import secrets and vars from .env file because of security and configuration reasons"""
 dotenv.load_dotenv()
-discordToken = os.getenv("DISCORD_TOKEN")
+discordToken = os.getenv('DISCORD_TOKEN')
 
 
 # create subbot
@@ -43,14 +43,14 @@ def main():
     dir_name_filenames_dict = {}
 
     # get all files from directories and subdirectories
-    for (dir_path, dir_name, file_names) in os.walk("./ext"):
+    for (dir_path, dir_name, file_names) in os.walk('./ext'):
         dotted_dir_path = dir_path.replace('./', '').replace('\\', '.')
         dir_name_filenames_dict[dotted_dir_path] = file_names
 
     # try loading all the files that end on .py
     for dotted_dir_path in dir_name_filenames_dict.keys():
         for file_name in dir_name_filenames_dict[dotted_dir_path]:
-            if file_name.endswith(".py"):
+            if file_name.endswith('.py'):
                 try:
                     if not file_name == 'discord_subbot.py':
                         client.load_extension(f"{dotted_dir_path}.{file_name[:-3]}")

@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 # dotenv
 """import secrets and vars from .env file because of security and configuration reasons"""
 dotenv.load_dotenv()
-embedColor = int(os.getenv("EMBED_COLOR"))
+embedColor = int(os.getenv('EMBED_COLOR'))
 
 
 # class fpr custom help command

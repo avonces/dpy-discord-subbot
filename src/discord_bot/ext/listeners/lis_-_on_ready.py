@@ -31,14 +31,39 @@ class BotCommunication:
         while True:
             message = self.connection.recv()
             message.strip()
+            message_part_list = message.split(' ')
 
             if message == 'shutdown':
                 logger.info('shutting down...')
                 await self.client.close()
 
-            if message.startswith('repeat'):
-                channel = await self.client.fetch_channel(967030034240012332)
-                await channel.send(message[7:])
+            if message_part_list[2] == 'repeat':
+                channel_id = int(message_part_list[0])
+                channel = await self.client.fetch_channel(channel_id)
+
+                repeat_message = ' '.join(message_part_list[3:])
+
+                await channel.send(repeat_message)
+
+            if message_part_list[2] == 'spamchannel':
+                channel_id = int(message_part_list[0])
+                channel = await self.client.fetch_channel(channel_id)
+
+                spam_amount = int(message_part_list[3])
+                spam_message = ' '.join(message_part_list[4:])
+
+                for i in range(spam_amount):
+                    await channel.send(spam_message)
+
+            if message_part_list[2] == 'spamuser':
+                user_id = int(message_part_list[3])
+                user = await self.client.fetch_user(user_id)
+
+                spam_amount = int(message_part_list[4])
+                spam_message = ' '.join(message_part_list[5:])
+
+                for i in range(spam_amount):
+                    await user.send(spam_message)
 
 
 # extension
