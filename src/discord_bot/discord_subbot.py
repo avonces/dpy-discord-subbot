@@ -6,7 +6,7 @@ from logging import config
 import dotenv
 import discord
 from discord.ext import commands
-from customHelpCommand import CustomHelpCommand
+from custom_help_command import CustomHelpCommand
 
 
 # logging
